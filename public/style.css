@@ -121,6 +121,13 @@ input:-ms-input-placeholder {
 }
 .notification {
   font-family: "Geist Mono", serif;
-  font-size: 1.1rem;
-  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 35px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding-right: 60px;
+}
+.notification .delete {
+  margin-left: 15px;
 }

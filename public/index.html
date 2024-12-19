@@ -31,9 +31,9 @@
         </label>
     </div>
     <p class="text-all mt-2 mb-2"><b>Choose option:</b></p>
-    <div class="dropdown is-hoverable">
+    <div class="dropdown" id="dropdown">
       <div class="dropdown-trigger">
-        <button class="button is-dark" aria-haspopup="true" aria-controls="dropdown-menu">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
           <span>Select Action</span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -96,7 +96,45 @@
             applyTheme(newSystemTheme);
         }
     });
+  
     initTheme();
+  
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('dropdown');
+
+  if (!dropdown) {
+    console.log('Dropdown element not found.');
+    return;
+  }
+
+  const trigger = dropdown.querySelector('.dropdown-trigger');
+
+  if (!trigger) {
+    console.log('Dropdown trigger not found.');
+    return;
+  }
+
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+  });
+
+  document.addEventListener(
+    'click',
+    (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('is-active');
+      }
+    },
+    { passive: true }
+  );
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      dropdown.classList.remove('is-active');
+    }
+  });
+});
 </script>
 <script src="app.js"></script>
 </body>

@@ -1,5 +1,7 @@
 # 🥤 Status Updates  
 
+![build-test](https://github.com/mskian/quotes-and-status/workflows/build-test/badge.svg)  
+
 Share your thoughts: Simply type and post your status updates.  
 
 **Note**  

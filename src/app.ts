@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from 'express';
+import path from 'path';
 import quoteRoutes from './routes/statusRoutes';
 import errorHandler from './middlewares/errorHandler';
 
@@ -11,6 +12,9 @@ app.use(express.urlencoded({
 }));
 
 app.use(express.static('public'));
+app.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 app.use('/api/status', quoteRoutes);
 
 app.use((req: Request, res: Response) => {

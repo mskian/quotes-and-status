@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import path from 'path';
 import quoteRoutes from './routes/statusRoutes';
 import errorHandler from './middlewares/errorHandler';
+import { setSecureHeaders } from "./middlewares/secureHeaders";
 
 const app: Application = express();
 const PORT = process.env.PORT || 6027;
@@ -10,6 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+app.use(setSecureHeaders);
+app.disable("x-powered-by");
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.get('/', (req: Request, res: Response) => {
